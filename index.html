@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Valentine ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 *{
@@ -12,116 +13,129 @@
   font-family:'Segoe UI',sans-serif;
 }
 
+html,body{
+  scroll-behavior:smooth;
+}
+
 body{
+  background:linear-gradient(180deg,#ff7aa2,#ffc3d9,#cdb4db,#ffb3c6);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* SECTION = PAGE */
+section{
   height:100vh;
-  overflow:hidden;
-  background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffd1dc,#cdb4db);
   display:flex;
   justify-content:center;
   align-items:center;
-  color:#fff;
-}
-
-/* Floating hearts */
-.heart{
-  position:absolute;
-  animation:float 6s linear infinite;
-}
-@keyframes float{
-  from{transform:translateY(100vh);opacity:1;}
-  to{transform:translateY(-10vh);opacity:0;}
-}
-
-/* Card */
-.card{
-  width:90%;
-  max-width:900px;
-  background:rgba(255,255,255,0.18);
-  backdrop-filter:blur(15px);
-  border-radius:25px;
-  padding:30px;
   text-align:center;
-  box-shadow:0 0 40px rgba(255,0,120,0.5);
+  padding:30px;
   position:relative;
-  z-index:5;
 }
 
-/* Pages */
-.page{display:none;}
-.page.active{display:block;}
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.18);
+  backdrop-filter:blur(14px);
+  border-radius:25px;
+  padding:35px;
+  max-width:900px;
+  width:100%;
+  box-shadow:0 0 40px rgba(255,0,120,.4);
+}
 
-h1{margin-bottom:15px;}
-.message{min-height:60px;font-size:1.2em}
+h1,h2{
+  color:#fff;
+  margin-bottom:15px;
+}
 
-/* Buttons */
+p{
+  font-size:1.2em;
+  line-height:1.6;
+}
+
+/* HEART FLOAT */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  animation:float 7s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:0}
+  20%{opacity:1}
+  100%{transform:translateY(-120vh);opacity:0}
+}
+
+/* BUTTONS */
 .buttons{
-  margin-top:25px;
+  margin-top:30px;
   position:relative;
   height:80px;
 }
 
 button{
-  padding:12px 30px;
-  font-size:1.1em;
+  padding:12px 32px;
   border:none;
   border-radius:30px;
+  font-size:1.1em;
   cursor:pointer;
 }
 
 #yes{
   background:#ff4d6d;
-  color:#fff;
+  color:white;
 }
 
 #no{
-  background:#fff;
+  background:white;
   color:#ff4d6d;
   position:absolute;
   right:0;
 }
 
-/* Photos */
+/* PHOTOS */
 .photos{
   display:flex;
-  gap:15px;
-  justify-content:center;
   flex-wrap:wrap;
-  margin-top:20px;
+  justify-content:center;
+  gap:18px;
+  margin-top:25px;
 }
 
 .photo-box{
   width:180px;
-  animation:pop 0.8s ease forwards;
+  animation:pop .8s ease forwards;
 }
 
 .photo-box img{
   width:100%;
   border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.4);
+  box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
 
-.caption{margin-top:8px;font-size:0.95em;}
+.caption{
+  margin-top:8px;
+  font-size:.95em;
+}
 
 @keyframes pop{
-  from{transform:scale(0);opacity:0;}
-  to{transform:scale(1);opacity:1;}
+  from{transform:scale(0);opacity:0}
+  to{transform:scale(1);opacity:1}
 }
 
-/* Final page */
-.final{
-  font-size:1.4em;
-  line-height:1.6;
-}
-
-/* Explosion */
+/* FINAL HEART EXPLOSION */
 .explosion{
-  position:absolute;
+  position:fixed;
   font-size:28px;
   animation:boom 1.5s ease-out forwards;
 }
+
 @keyframes boom{
-  from{transform:scale(0);opacity:1;}
-  to{transform:scale(2.5);opacity:0;}
+  from{transform:scale(0);opacity:1}
+  to{transform:scale(3);opacity:0}
 }
 </style>
 </head>
@@ -132,67 +146,80 @@ button{
   <source src="romantic.mp3" type="audio/mpeg">
 </audio>
 
-<div class="card">
-
 <!-- PAGE 1 -->
-<div class="page active" id="page1">
-  <h1>Happy Valentine Day My Pretty Falak ❤️</h1>
-  <div class="message" id="typing"></div>
+<section id="page1">
+  <div class="card">
+    <h1>Happy Valentine Day<br>My Pretty Falak ❤️</h1>
+    <p id="typing"></p>
 
-  <div class="buttons">
-    <button id="yes">YES ❤️</button>
-    <button id="no">NO</button>
+    <div class="buttons">
+      <button id="yes">YES ❤️</button>
+      <button id="no">NO</button>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- PAGE 2 -->
-<div class="page" id="page2">
-  <h1>Just Look At You 🥺❤️</h1>
-  <div class="photos">
-    <div class="photo-box">
-      <img src="photo1.jpeg">
-      <div class="caption">You're effortlessly beautiful ❤️</div>
-    </div>
-    <div class="photo-box">
-      <img src="photo2.jpeg">
-      <div class="caption">My eyes always search for you ✨</div>
-    </div>
-    <div class="photo-box">
-      <img src="photo3.jpeg">
-      <div class="caption">You make my world brighter 💫</div>
-    </div>
-    <div class="photo-box">
-      <img src="photo4.jpeg">
-      <div class="caption">Forever grateful for you 💖</div>
+<section id="page2">
+  <div class="card">
+    <h2>Just Look At You 🥺❤️</h2>
+    <div class="photos">
+      <div class="photo-box">
+        <img src="photo1.jpeg">
+        <div class="caption">You're effortlessly beautiful ❤️</div>
+      </div>
+      <div class="photo-box">
+        <img src="photo2.jpeg">
+        <div class="caption">My favorite view ✨</div>
+      </div>
+      <div class="photo-box">
+        <img src="photo3.jpeg">
+        <div class="caption">You light up my world 💫</div>
+      </div>
+      <div class="photo-box">
+        <img src="photo4.jpeg">
+        <div class="caption">Pure magic 💖</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- PAGE 3 (FINAL) -->
-<div class="page" id="page3">
-  <h1>Once Again… ❤️</h1>
-  <div class="final">
-    Happy Valentine Day My Love 💕<br>
-    I choose you. Today. Tomorrow. Always.<br>
-    You are my world 🌍❤️
+<!-- PAGE 3 -->
+<section id="page3">
+  <div class="card">
+    <h2>From My Heart ❤️</h2>
+    <p>
+      I love you a lot.<br>
+      You are my world.<br>
+      Every smile of yours makes my day brighter ✨
+    </p>
   </div>
-</div>
+</section>
 
-</div>
+<!-- PAGE 4 -->
+<section id="page4">
+  <div class="card">
+    <h1>Forever Yours ❤️</h1>
+    <p>
+      Happy Valentine Day once again 💕<br>
+      I choose you — always.
+    </p>
+  </div>
+</section>
 
 <script>
-/* Typing */
-const text="I love you a lot. You are my world ❤️";
+/* Typing text */
+const text="I love you a lot ❤️ You are my world ❤️";
 let i=0;
 function type(){
   if(i<text.length){
-    document.getElementById("typing").innerHTML+=text[i];
-    i++; setTimeout(type,80);
+    document.getElementById("typing").innerHTML+=text[i++];
+    setTimeout(type,80);
   }
 }
 type();
 
-/* NO button tease – NEVER disappears */
+/* NO button tease (never disappears) */
 const no=document.getElementById("no");
 no.addEventListener("mouseover",()=>{
   const parent=no.parentElement;
@@ -202,40 +229,31 @@ no.addEventListener("mouseover",()=>{
   no.style.top=Math.random()*maxY+"px";
 });
 
-/* YES click */
+/* YES = play music + heart explosion */
 document.getElementById("yes").addEventListener("click",()=>{
   document.getElementById("music").play();
-  switchPage(1,2);
-  heartExplosion();
-  setTimeout(()=>switchPage(2,3),6000);
+  explode();
 });
-
-/* Switch pages */
-function switchPage(from,to){
-  document.getElementById("page"+from).classList.remove("active");
-  document.getElementById("page"+to).classList.add("active");
-}
 
 /* Floating hearts */
 setInterval(()=>{
   const h=document.createElement("div");
   h.className="heart";
-  h.innerHTML="❤️";
+  h.innerHTML=["❤️","💖","💘","💝"][Math.floor(Math.random()*4)];
   h.style.left=Math.random()*100+"vw";
   h.style.fontSize=Math.random()*20+15+"px";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},400);
+  setTimeout(()=>h.remove(),7000);
+},350);
 
-/* Explosion */
-function heartExplosion(){
-  for(let i=0;i<35;i++){
+/* Heart explosion */
+function explode(){
+  for(let i=0;i<40;i++){
     const e=document.createElement("div");
     e.className="explosion";
     e.innerHTML=["❤️","💖","💘","💝"][Math.floor(Math.random()*4)];
-    e.style.left="50%";
-    e.style.top="50%";
-    e.style.transform=`translate(-50%,-50%) translate(${Math.random()*400-200}px,${Math.random()*400-200}px)`;
+    e.style.left=Math.random()*100+"vw";
+    e.style.top=Math.random()*100+"vh";
     document.body.appendChild(e);
     setTimeout(()=>e.remove(),1500);
   }
