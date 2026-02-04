@@ -10,132 +10,131 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
+  font-family:'Poppins',sans-serif;
 }
 
-html,body{
+html{
   scroll-behavior:smooth;
 }
 
 body{
-  background:linear-gradient(180deg,#ff7aa2,#ffc3d9,#cdb4db,#ffb3c6);
-  color:#fff;
+  background:linear-gradient(180deg,#fde2e4,#f8edeb,#eae4e9,#dee2ff);
+  color:#3a3a3a;
   overflow-x:hidden;
 }
 
-/* SECTION = PAGE */
+/* SECTIONS */
 section{
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:30px;
-  position:relative;
+  padding:40px;
 }
 
 /* CARD */
 .card{
-  background:rgba(255,255,255,0.18);
-  backdrop-filter:blur(14px);
-  border-radius:25px;
-  padding:35px;
   max-width:900px;
   width:100%;
-  box-shadow:0 0 40px rgba(255,0,120,.4);
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(12px);
+  border-radius:24px;
+  padding:45px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.08);
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
 }
 
 h1,h2{
-  color:#fff;
-  margin-bottom:15px;
+  color:#b5179e;
+  margin-bottom:16px;
 }
 
 p{
-  font-size:1.2em;
-  line-height:1.6;
-}
-
-/* HEART FLOAT */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  animation:float 7s linear infinite;
-  pointer-events:none;
-}
-
-@keyframes float{
-  0%{transform:translateY(0);opacity:0}
-  20%{opacity:1}
-  100%{transform:translateY(-120vh);opacity:0}
+  font-size:1.15em;
+  line-height:1.7;
 }
 
 /* BUTTONS */
 .buttons{
   margin-top:30px;
   position:relative;
-  height:80px;
+  height:70px;
 }
 
 button{
-  padding:12px 32px;
+  padding:12px 34px;
   border:none;
   border-radius:30px;
-  font-size:1.1em;
+  font-size:1em;
   cursor:pointer;
 }
 
 #yes{
-  background:#ff4d6d;
+  background:#ff758f;
   color:white;
 }
 
 #no{
-  background:white;
-  color:#ff4d6d;
+  background:#eaeaea;
+  color:#555;
   position:absolute;
   right:0;
 }
 
 /* PHOTOS */
 .photos{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:18px;
-  margin-top:25px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:22px;
+  margin-top:30px;
 }
 
-.photo-box{
-  width:180px;
-  animation:pop .8s ease forwards;
+.photo{
+  opacity:0;
+  transform:scale(.9);
+  transition:.8s ease;
 }
 
-.photo-box img{
+.photo.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.photo img{
   width:100%;
   border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,.4);
+  box-shadow:0 12px 30px rgba(0,0,0,.15);
 }
 
 .caption{
-  margin-top:8px;
+  margin-top:10px;
   font-size:.95em;
+  color:#555;
 }
 
-@keyframes pop{
-  from{transform:scale(0);opacity:0}
-  to{transform:scale(1);opacity:1}
-}
-
-/* FINAL HEART EXPLOSION */
-.explosion{
+/* HEARTS (SUBTLE) */
+.heart{
   position:fixed;
-  font-size:28px;
-  animation:boom 1.5s ease-out forwards;
+  bottom:-20px;
+  font-size:16px;
+  opacity:.5;
+  animation:float 10s linear infinite;
+  pointer-events:none;
 }
 
-@keyframes boom{
-  from{transform:scale(0);opacity:1}
-  to{transform:scale(3);opacity:0}
+@keyframes float{
+  to{
+    transform:translateY(-120vh);
+    opacity:0;
+  }
 }
 </style>
 </head>
@@ -147,117 +146,111 @@ button{
 </audio>
 
 <!-- PAGE 1 -->
-<section id="page1">
+<section>
   <div class="card">
-    <h1>Happy Valentine Day<br>My Pretty Falak ❤️</h1>
+    <h1>Happy Valentine Day</h1>
     <p id="typing"></p>
 
     <div class="buttons">
-      <button id="yes">YES ❤️</button>
-      <button id="no">NO</button>
+      <button id="yes">Yes ❤️</button>
+      <button id="no">No</button>
     </div>
   </div>
 </section>
 
 <!-- PAGE 2 -->
-<section id="page2">
+<section>
   <div class="card">
-    <h2>Just Look At You 🥺❤️</h2>
+    <h2>You, Through My Eyes</h2>
     <div class="photos">
-      <div class="photo-box">
+      <div class="photo">
         <img src="photo1.jpeg">
-        <div class="caption">You're effortlessly beautiful ❤️</div>
+        <div class="caption">Grace in every moment</div>
       </div>
-      <div class="photo-box">
+      <div class="photo">
         <img src="photo2.jpeg">
-        <div class="caption">My favorite view ✨</div>
+        <div class="caption">Soft, strong, beautiful</div>
       </div>
-      <div class="photo-box">
+      <div class="photo">
         <img src="photo3.jpeg">
-        <div class="caption">You light up my world 💫</div>
+        <div class="caption">Where my peace lives</div>
       </div>
-      <div class="photo-box">
+      <div class="photo">
         <img src="photo4.jpeg">
-        <div class="caption">Pure magic 💖</div>
+        <div class="caption">Simply unforgettable</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PAGE 3 -->
-<section id="page3">
+<section>
   <div class="card">
-    <h2>From My Heart ❤️</h2>
+    <h2>From My Heart</h2>
     <p>
-      I love you a lot.<br>
-      You are my world.<br>
-      Every smile of yours makes my day brighter ✨
+      I love you deeply.<br>
+      You are my calm, my happiness, my world.<br>
+      Every day with you feels warmer.
     </p>
   </div>
 </section>
 
 <!-- PAGE 4 -->
-<section id="page4">
+<section>
   <div class="card">
-    <h1>Forever Yours ❤️</h1>
+    <h1>Always You</h1>
     <p>
-      Happy Valentine Day once again 💕<br>
-      I choose you — always.
+      Happy Valentine Day ❤️<br>
+      Today, tomorrow, always.
     </p>
   </div>
 </section>
 
 <script>
-/* Typing text */
-const text="I love you a lot ❤️ You are my world ❤️";
+/* Typing */
+const text="My pretty Falak ❤️ You mean everything to me.";
 let i=0;
 function type(){
   if(i<text.length){
     document.getElementById("typing").innerHTML+=text[i++];
-    setTimeout(type,80);
+    setTimeout(type,70);
   }
 }
 type();
 
-/* NO button tease (never disappears) */
+/* NO button tease (professional bounds) */
 const no=document.getElementById("no");
-no.addEventListener("mouseover",()=>{
-  const parent=no.parentElement;
-  const maxX=parent.clientWidth-no.offsetWidth;
-  const maxY=parent.clientHeight-no.offsetHeight;
-  no.style.left=Math.random()*maxX+"px";
-  no.style.top=Math.random()*maxY+"px";
+no.addEventListener("mouseenter",()=>{
+  const p=no.parentElement;
+  no.style.left=Math.random()*(p.clientWidth-no.offsetWidth)+"px";
 });
 
-/* YES = play music + heart explosion */
+/* Music */
 document.getElementById("yes").addEventListener("click",()=>{
   document.getElementById("music").play();
-  explode();
 });
 
-/* Floating hearts */
+/* Reveal on scroll */
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+      e.target.querySelectorAll(".photo").forEach(p=>p.classList.add("show"));
+    }
+  });
+},{threshold:0.3});
+
+document.querySelectorAll(".card").forEach(c=>observer.observe(c));
+
+/* Subtle hearts */
 setInterval(()=>{
   const h=document.createElement("div");
   h.className="heart";
-  h.innerHTML=["❤️","💖","💘","💝"][Math.floor(Math.random()*4)];
+  h.innerHTML="❤️";
   h.style.left=Math.random()*100+"vw";
-  h.style.fontSize=Math.random()*20+15+"px";
   document.body.appendChild(h);
-  setTimeout(()=>h.remove(),7000);
-},350);
-
-/* Heart explosion */
-function explode(){
-  for(let i=0;i<40;i++){
-    const e=document.createElement("div");
-    e.className="explosion";
-    e.innerHTML=["❤️","💖","💘","💝"][Math.floor(Math.random()*4)];
-    e.style.left=Math.random()*100+"vw";
-    e.style.top=Math.random()*100+"vh";
-    document.body.appendChild(e);
-    setTimeout(()=>e.remove(),1500);
-  }
-}
+  setTimeout(()=>h.remove(),10000);
+},1200);
 </script>
 
 </body>
