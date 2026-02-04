@@ -235,14 +235,22 @@ function type(){
 }
 type();
 
-/* NO button tease – FIXED SIZE */
+/* NO button – FIXED hover, no resize, no jump */
 const no=document.getElementById("no");
+const container=no.parentElement;
+
+no.style.position="absolute";
+no.style.width="130px";
+no.style.height="44px";
+
 no.addEventListener("mouseenter",()=>{
-  const parent=no.parentElement;
-  const maxX=parent.clientWidth-no.offsetWidth;
-  const maxY=parent.clientHeight-no.offsetHeight;
-  no.style.left=Math.random()*maxX+"px";
-  no.style.top=Math.random()*maxY+"px";
+  const maxX = container.clientWidth - no.offsetWidth;
+  const maxY = container.clientHeight - no.offsetHeight;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  no.style.transform = `translate(${x}px, ${y}px)`;
 });
 
 /* Music */
@@ -273,5 +281,7 @@ setInterval(()=>{
 },1400);
 </script>
 
+
 </body>
 </html>
+
